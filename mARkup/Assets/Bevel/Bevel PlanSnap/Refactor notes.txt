@@ -1,0 +1,47 @@
+Current:
+Plan snap manager - sheetish
+
+Current PlanSnap Manager Jobs
+	1. Check for click (keep for now, until transition to action event delegates)
+	2. Reacts to markers (move to marker recognition)
+		turns off sprites (move to a TurnMeOff script)
+		and turns on plansnaps (just turn on everything unless array populated)
+
+
+
+
+
+
+
+
+
+Job categories
+	1. react to marker (platform specific, probably. Try base and inherit)
+	2. Grouping in sheets (hierarchy ok? or script required?)
+	3. store snapping info.
+	4. store universal info like who we are moving around. 
+	4. react to selections, clicks (has been sheet specific but I guess shouldn't be.)
+		just nots: marker reaction is on sheet groupings. Plan snap manager is over the whole thing. I could avoid a plansnap manager altogether but I would probably need scripts elsewhere and it would limit the ability to have two plansnap systems in place at once. 
+		Create seperate "go away at load" script for scene setup aids that we never want to see. Can be included in prefab so setup is easier and less fuckupable. 
+
+
+New scripts: 
+	1. Plan Snap Manager
+		a. stores info about what is being moved.
+		b. stores all plansnaps under it so snaps know who to react to if multiple groups. 
+		c. executes things that affect the group. like turn off the others.
+		d. stores and initializes neutral snapless state when a new marker is seen.
+	2. Marker recognition. (a base class that can inherit and subscribe to marker events from different platforms?)
+		a. when NEW marker is seen, turn on children and send turn off message to the other markers (opt). 
+		b. turn off when other markers are seen. 
+		c. No locating other stuff. This will appear with a location and the other scripts do app specific stuff when that happens. 
+		d. NOTE: make sure to seperate locating of content by marker from all the other marker response because in Magic Leap, location is already covered. 
+	3. Plan Snap (most childish)
+		a. Stores info about location of snapped objects. 
+		b. holds functions that do the locating. In the future, subscribe to the bevelinput
+
+
+
+
+If I were doing this in normal object orientation,
+I would create a class called managed object. It would have some properties: what I am. Location. Scale. Rotation. Then you have a class called snap that has an array of managed objects. Then the manager would have an array or list of these snaps and fill them with the info. I can do this in unity effectively if I can serialize and display the managed object references in the snaps, but then I'm still managign the objects in the snap which is duplication of definition which I'm trying to avoid. Ah well.

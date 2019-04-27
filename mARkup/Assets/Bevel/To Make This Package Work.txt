@@ -1,0 +1,4 @@
+In its current form, this package requires:
+
+1. Unity ARKit Plugin (We have a recent enough version in the R&D folder. Just import the unity package.
+2. Tridify (from the Unity Asset Store)

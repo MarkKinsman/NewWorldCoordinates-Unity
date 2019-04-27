@@ -1,0 +1,203 @@
+fileFormatVersion: 2
+guid: 51c94781c09e40c4f9a2b51104a6106d
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Box001
+    100002: //RootNode
+    100004: scan
+    100006: scan_LOD001
+    100008: scan_LOD002
+    100010: scan_LOD003
+    400000: Box001
+    400002: //RootNode
+    400004: scan
+    400006: scan_LOD001
+    400008: scan_LOD002
+    400010: scan_LOD003
+    2100000: 6485a8329d4e41a997a4f4c34b5d1880_000_jpg
+    2100002: 6485a8329d4e41a997a4f4c34b5d1880_001_jpg
+    2100004: 6485a8329d4e41a997a4f4c34b5d1880_002_jpg
+    2100006: 6485a8329d4e41a997a4f4c34b5d1880_003_jpg
+    2100008: 6485a8329d4e41a997a4f4c34b5d1880_004_jpg
+    2100010: 6485a8329d4e41a997a4f4c34b5d1880_005_jpg
+    2100012: 6485a8329d4e41a997a4f4c34b5d1880_006_jpg
+    2100014: 6485a8329d4e41a997a4f4c34b5d1880_007_jpg
+    2100016: 6485a8329d4e41a997a4f4c34b5d1880_008_jpg
+    2100018: 6485a8329d4e41a997a4f4c34b5d1880_009_jpg
+    2100020: 6485a8329d4e41a997a4f4c34b5d1880_010_jpg
+    2100022: 6485a8329d4e41a997a4f4c34b5d1880_011_jpg
+    2100024: 6485a8329d4e41a997a4f4c34b5d1880_012_jpg
+    2100026: 6485a8329d4e41a997a4f4c34b5d1880_013_jpg
+    2100028: 6485a8329d4e41a997a4f4c34b5d1880_014_jpg
+    2100030: 6485a8329d4e41a997a4f4c34b5d1880_015_jpg
+    2100032: 6485a8329d4e41a997a4f4c34b5d1880_016_jpg
+    2100034: 6485a8329d4e41a997a4f4c34b5d1880_017_jpg
+    2100036: 6485a8329d4e41a997a4f4c34b5d1880_018_jpg
+    2100038: 6485a8329d4e41a997a4f4c34b5d1880_019_jpg
+    2100040: 6485a8329d4e41a997a4f4c34b5d1880_020_jpg
+    2100042: 6485a8329d4e41a997a4f4c34b5d1880_021_jpg
+    2100044: 6485a8329d4e41a997a4f4c34b5d1880_022_jpg
+    2100046: 6485a8329d4e41a997a4f4c34b5d1880_023_jpg
+    2100048: 6485a8329d4e41a997a4f4c34b5d1880_024_jpg
+    2100050: 6485a8329d4e41a997a4f4c34b5d1880_025_jpg
+    2100052: 6485a8329d4e41a997a4f4c34b5d1880_026_jpg
+    2100054: 6485a8329d4e41a997a4f4c34b5d1880_027_jpg
+    2100056: 6485a8329d4e41a997a4f4c34b5d1880_028_jpg
+    2100058: 6485a8329d4e41a997a4f4c34b5d1880_029_jpg
+    2100060: 6485a8329d4e41a997a4f4c34b5d1880_030_jpg
+    2100062: 6485a8329d4e41a997a4f4c34b5d1880_031_jpg
+    2100064: 6485a8329d4e41a997a4f4c34b5d1880_032_jpg
+    2100066: 6485a8329d4e41a997a4f4c34b5d1880_033_jpg
+    2100068: 6485a8329d4e41a997a4f4c34b5d1880_034_jpg
+    2100070: 6485a8329d4e41a997a4f4c34b5d1880_035_jpg
+    2100072: 6485a8329d4e41a997a4f4c34b5d1880_036_jpg
+    2100074: 6485a8329d4e41a997a4f4c34b5d1880_037_jpg
+    2100076: 6485a8329d4e41a997a4f4c34b5d1880_038_jpg
+    2100078: 6485a8329d4e41a997a4f4c34b5d1880_039_jpg
+    2100080: 6485a8329d4e41a997a4f4c34b5d1880_040_jpg
+    2100082: 6485a8329d4e41a997a4f4c34b5d1880_041_jpg
+    2100084: 6485a8329d4e41a997a4f4c34b5d1880_042_jpg
+    2100086: 6485a8329d4e41a997a4f4c34b5d1880_043_jpg
+    2100088: 6485a8329d4e41a997a4f4c34b5d1880_044_jpg
+    2100090: 6485a8329d4e41a997a4f4c34b5d1880_045_jpg
+    2100092: 6485a8329d4e41a997a4f4c34b5d1880_046_jpg
+    2100094: 6485a8329d4e41a997a4f4c34b5d1880_047_jpg
+    2100096: 6485a8329d4e41a997a4f4c34b5d1880_048_jpg
+    2100098: 6485a8329d4e41a997a4f4c34b5d1880_049_jpg
+    2100100: 6485a8329d4e41a997a4f4c34b5d1880_050_jpg
+    2100102: 6485a8329d4e41a997a4f4c34b5d1880_051_jpg
+    2100104: 6485a8329d4e41a997a4f4c34b5d1880_052_jpg
+    2100106: 6485a8329d4e41a997a4f4c34b5d1880_053_jpg
+    2100108: 6485a8329d4e41a997a4f4c34b5d1880_054_jpg
+    2100110: 6485a8329d4e41a997a4f4c34b5d1880_055_jpg
+    2100112: 6485a8329d4e41a997a4f4c34b5d1880_056_jpg
+    2100114: 6485a8329d4e41a997a4f4c34b5d1880_057_jpg
+    2100116: 6485a8329d4e41a997a4f4c34b5d1880_058_jpg
+    2100118: 6485a8329d4e41a997a4f4c34b5d1880_059_jpg
+    2100120: 6485a8329d4e41a997a4f4c34b5d1880_060_jpg
+    2100122: 6485a8329d4e41a997a4f4c34b5d1880_061_jpg
+    2100124: 6485a8329d4e41a997a4f4c34b5d1880_062_jpg
+    2100126: 6485a8329d4e41a997a4f4c34b5d1880_063_jpg
+    2100128: 6485a8329d4e41a997a4f4c34b5d1880_064_jpg
+    2100130: 6485a8329d4e41a997a4f4c34b5d1880_065_jpg
+    2100132: 6485a8329d4e41a997a4f4c34b5d1880_066_jpg
+    2100134: 6485a8329d4e41a997a4f4c34b5d1880_067_jpg
+    2100136: 6485a8329d4e41a997a4f4c34b5d1880_068_jpg
+    2100138: 6485a8329d4e41a997a4f4c34b5d1880_069_jpg
+    2100140: 6485a8329d4e41a997a4f4c34b5d1880_070_jpg
+    2100142: 6485a8329d4e41a997a4f4c34b5d1880_071_jpg
+    2100144: 6485a8329d4e41a997a4f4c34b5d1880_072_jpg
+    2100146: 6485a8329d4e41a997a4f4c34b5d1880_073_jpg
+    2100148: 6485a8329d4e41a997a4f4c34b5d1880_074_jpg
+    2100150: 6485a8329d4e41a997a4f4c34b5d1880_075_jpg
+    2100152: 6485a8329d4e41a997a4f4c34b5d1880_076_jpg
+    2100154: 6485a8329d4e41a997a4f4c34b5d1880_077_jpg
+    2100156: 6485a8329d4e41a997a4f4c34b5d1880_078_jpg
+    2100158: 6485a8329d4e41a997a4f4c34b5d1880_079_jpg
+    2100160: 6485a8329d4e41a997a4f4c34b5d1880_080_jpg
+    2100162: 6485a8329d4e41a997a4f4c34b5d1880_081_jpg
+    2100164: 6485a8329d4e41a997a4f4c34b5d1880_082_jpg
+    2100166: 6485a8329d4e41a997a4f4c34b5d1880_083_jpg
+    2100168: 6485a8329d4e41a997a4f4c34b5d1880_084_jpg
+    2100170: 6485a8329d4e41a997a4f4c34b5d1880_085_jpg
+    2100172: No Name
+    2100174: scan_LOD001_Mat
+    2300000: Box001
+    2300002: scan
+    2300004: scan_LOD001
+    2300006: scan_LOD002
+    2300008: scan_LOD003
+    3300000: Box001
+    3300002: scan
+    3300004: scan_LOD001
+    3300006: scan_LOD002
+    3300008: scan_LOD003
+    4300000: scan
+    4300002: Box001
+    4300004: scan_LOD001
+    4300006: scan_LOD002
+    4300008: scan_LOD003
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
