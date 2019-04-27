@@ -13,7 +13,8 @@ using MagicLeap;
 
 namespace Bevel
 {
-    public class BevelInput : MonoBehaviour {
+    public class BevelInput : MonoBehaviour
+    {
 
         public LayerMask defaultClickLayers = ~0;
         public LayerMask defaultCropLayer = 0;
@@ -47,7 +48,7 @@ namespace Bevel
         }
 
         // Use this for initialization
-        void Start ()
+        void Start()
         {
             clickObjectEvent += ClickedObjectEventNotifier;
 #if UNITY_LUMIN
@@ -70,9 +71,10 @@ namespace Bevel
         {
             subscribedClick = true;
         }
-	
-	    // Every frame check for clicks, raycast on clicks, and visualize
-	    void Update () {
+
+        // Every frame check for clicks, raycast on clicks, and visualize
+        void Update()
+        {
             GameObject clickedObject;
             if (clickedObject = TestClick(defaultClickLayers))
             {
@@ -116,10 +118,10 @@ namespace Bevel
         {
             RaycastHit hit;
             RaycastHit extendedHit;
-            Vector2 clickPosition = new Vector2(0,0);
+            Vector2 clickPosition = new Vector2(0, 0);
             bool clicked = false;
             //test multitouch
-        
+
             if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 clickPosition = Input.GetTouch(0).position;
@@ -167,11 +169,12 @@ namespace Bevel
 
 
         //for both mouse and ios, test for clicks
-        public static GameObject TestClick(LayerMask layer){
-            
+        public static GameObject TestClick(LayerMask layer)
+        {
+
             if (isSomethingClicked())
             {
-                
+
                 Ray clickRay = GetAnyClickRay();
 
                 RaycastHit hit;
@@ -208,7 +211,7 @@ namespace Bevel
             {
                 return true;
             }
-                return false;
+            return false;
         }
 
         //make this a little more extensible. Get rays from each device.Then use them.
@@ -239,7 +242,7 @@ namespace Bevel
             }
         }
 
-#region Get Rays
+        #region Get Rays
         public static Ray GetMouseRay()
         {
             Vector2 mousePosition = Input.mousePosition;
@@ -256,7 +259,7 @@ namespace Bevel
         }
         public static Ray GetCameraRay()
         {
-            Ray cameraRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward) ;
+            Ray cameraRay = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             return cameraRay;
         }
         public static Ray GetControllerRay()
@@ -277,7 +280,7 @@ namespace Bevel
             Ray ray = new Ray();
             return ray;
         }
-#endregion
+        #endregion
 
         //stick an object at the ray hit point so we can see that it's working.
         public void visualizeRay(Ray ray, GameObject objectAtHit)
