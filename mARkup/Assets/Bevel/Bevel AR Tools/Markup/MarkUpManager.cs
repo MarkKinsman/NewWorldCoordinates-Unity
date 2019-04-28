@@ -10,7 +10,6 @@ namespace Bevel
     {
         public GameObject markupPrefab;
 
-
         private BevelInput bevelInput;
 
         private bool isWaitingForClick;
@@ -19,6 +18,13 @@ namespace Bevel
         void Start()
         {
             bevelInput = FindObjectOfType<BevelInput>();
+
+            DatabaseManager.instance.recievedMarkup += LoadMarkup;
+        }
+
+        private void OnDisable()
+        {
+            DatabaseManager.instance.recievedMarkup -= LoadMarkup;
         }
 
         // Update is called once per frame
@@ -30,8 +36,8 @@ namespace Bevel
             }
         }
 
-            //Just to initialize the process. Turn on that listeners for that. 
-            public void StartMarkup()
+        //Just to initialize the process. Turn on that listeners for that. 
+        public void StartMarkup()
         {
             isWaitingForClick = true;
         }
@@ -55,20 +61,17 @@ namespace Bevel
         public void AddMarkUp(RaycastHit hit)
         {
             GameObject markupObject = Instantiate(markupPrefab);
-            MarkUp markUp = markupObject.GetComponent<MarkUp>();
+            MarkUpRecord markUp = markupObject.GetComponent<MarkUpRecord>();
 
             markupObject.transform.position = hit.point;
             markupObject.transform.parent = transform;
 
-            //markUp.title = hit.collider.gameObject.name + " markup";
-            markUp.markedObject = hit.collider.gameObject;
-            markUp.relativePosition = markupObject.transform.position;
-            markUp.dateCreated = DateTime.Now;
-
+            //markUp.data = hit.collider.gameObject;
+            markUp.location = markupObject.transform.position;
         }
 
         //for loading markups that are saved to the server
-        public void LoadMarkup()
+        public void LoadMarkup(MarkUpRecord.MarkUpType type, MarkUpRecord markUpInstance)
         {
 
         }
