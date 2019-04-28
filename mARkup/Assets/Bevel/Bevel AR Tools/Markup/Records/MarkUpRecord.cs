@@ -6,8 +6,8 @@ public class MarkUpRecord
 {
     public enum MarkUpType { question, issue, testResult }
     public enum databaseStatus { unregistered, failedToRegister, registered }
-
     public databaseStatus DatabaseStatus = databaseStatus.unregistered;
+
     public string markup_Id;
     public int version_id;
     public MarkUpType type;

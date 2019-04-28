@@ -19,12 +19,12 @@ namespace Bevel
         {
             bevelInput = FindObjectOfType<BevelInput>();
 
-            DatabaseManager.instance.recievedMarkup += LoadMarkup;
+            DatabaseManager.instance.recievedMarkup += LoadMarkUp;
         }
 
         private void OnDisable()
         {
-            DatabaseManager.instance.recievedMarkup -= LoadMarkup;
+            DatabaseManager.instance.recievedMarkup -= LoadMarkUp;
         }
 
         // Update is called once per frame
@@ -61,19 +61,22 @@ namespace Bevel
         public void AddMarkUp(RaycastHit hit)
         {
             GameObject markupObject = Instantiate(markupPrefab);
-            //MarkUpRecord markUp = markupObject.GetComponent<MarkUpRecord>();
+            MarkUp markUp = markupObject.GetComponent<MarkUp>();
 
             markupObject.transform.position = hit.point;
             markupObject.transform.parent = transform;
 
-            //markUp.data = hit.collider.gameObject;
-            //markUp.location = markupObject.transform.position;
+            markUp.markupData.location = markupObject.transform.position;
         }
 
         //for loading markups that are saved to the server
-        public void LoadMarkup(MarkUpRecord.MarkUpType type, MarkUpRecord markUpInstance)
+        public void LoadMarkUp(MarkUpRecord.MarkUpType type, MarkUpRecord markUpInstance)
         {
+            GameObject markupObject = Instantiate(markupPrefab);
+            MarkUp markUp = markupObject.GetComponent<MarkUp>();
+            markupObject.transform.parent = transform;
 
+            markUp.LoadRecord(markUpInstance);
         }
 
     }

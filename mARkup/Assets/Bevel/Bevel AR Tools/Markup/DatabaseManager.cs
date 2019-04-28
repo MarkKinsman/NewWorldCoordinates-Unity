@@ -28,7 +28,7 @@ public class DatabaseManager : MonoBehaviour {
 
     #endregion
 
-    #region Unity Callbacks
+    #region Singleton Pattern
     //----------------------------------------------------------------------------------
 
     private void Awake()
@@ -60,9 +60,9 @@ public class DatabaseManager : MonoBehaviour {
     //----------------------------------------------------------------------------------
 
     // Used to start the SendMarkupToDatabase coroutine from Markup scripts
-    public void sendToDatabase(string type, string markup_Id, string jBlob, string creator, string assigned, string status, Vector3 location, GameObject markupGameObject)
+    public void SaveMarkUpToDatabase(MarkUpRecord record, GameObject markupGameObject)
     {
-        databaseQueue.Enqueue(() => { StartCoroutine(PostMarkup_ToDatabase(versionId, markup_Id, type, jBlob, creator, assigned, location, status, markupGameObject)); });
+        databaseQueue.Enqueue(() => { StartCoroutine(PostMarkup_ToDatabase(record, markupGameObject)); });
         if (!isDequeuing)
         {
             StartCoroutine(ExecuteDatabaseQueue());
@@ -81,13 +81,17 @@ public class DatabaseManager : MonoBehaviour {
     #endregion
 
     #region Private Methods
+    //----------------------------------------------------------------------------------
 
     private void InjectMarkupParams(string markupId, string jBlob)
     {
         MarkUpRecord myMarkupInstance;
         MarkupLibrarySingleton.instance.markupDict.TryGetValue(markupId, out myMarkupInstance);
-        if(myMarkupInstance == null) { return; }
-        Endpoint_PostMarkup markupParams = JsonUtility.FromJson<Endpoint_PostMarkup>(jBlob as string);
+        if(myMarkupInstance == null)
+        {
+            return;
+        }
+        MarkUpRecord markupParams = JsonUtility.FromJson<MarkUpRecord>(jBlob as string);
         myMarkupInstance.updated_at = markupParams.updated_at;
         myMarkupInstance.created_at = markupParams.created_at;
         myMarkupInstance.version_id = markupParams.version_id;
@@ -95,7 +99,7 @@ public class DatabaseManager : MonoBehaviour {
 
 #endregion
 
-    #region coroutines
+    #region Coroutines
     //----------------------------------------------------------------------------------
 
     //Attempts to get all of the project records in the database.
@@ -155,19 +159,19 @@ public class DatabaseManager : MonoBehaviour {
     }
 
     //Attempts to create a new markup record.
-    IEnumerator PostMarkup_ToDatabase(int versionID, string markup_Id, string type, string jBlob, string creator, string assigned, Vector3 location, string status, GameObject markupGameObject)
+    IEnumerator PostMarkup_ToDatabase(MarkUpRecord record, GameObject markupGameObject)
     {
         isWaitingForResponse = true;
 
         WWWForm markupForm = new WWWForm();
-        markupForm.AddField("version_id", versionID);
-        markupForm.AddField("markup_id", markup_Id);
-        markupForm.AddField("type", type);
-        markupForm.AddField("data", jBlob);
-        markupForm.AddField("creator", creator);
-        markupForm.AddField("assigned", assigned);
-        markupForm.AddField("location", JsonUtility.ToJson(location));
-        markupForm.AddField("status", status);
+        markupForm.AddField("version_id", versionId);
+        markupForm.AddField("markup_id", record.markup_Id);
+        markupForm.AddField("type", record.type.ToString());
+        markupForm.AddField("data", record.data.Serialize());
+        markupForm.AddField("creator", record.creator);
+        markupForm.AddField("assigned", record.assigned);
+        markupForm.AddField("location", JsonUtility.ToJson(record.location));
+        markupForm.AddField("status", record.status);
 
         var download = UnityWebRequest.Post(Endpoint_PostMarkup.url, markupForm);
 
@@ -175,17 +179,17 @@ public class DatabaseManager : MonoBehaviour {
 
         if (markupGameObject != null)
         {
-            MarkUpRecord myMarkupInstance = markupGameObject.GetComponent<MarkUpRecord>();
+            MarkUp myMarkupInstance = markupGameObject.GetComponent<MarkUp>();
 
             if (download.isNetworkError || download.isHttpError)
             {
                 print("Error downloading: " + download.error);
-                myMarkupInstance.DatabaseStatus = MarkUpRecord.databaseStatus.failedToRegister;
+                myMarkupInstance.markupData.DatabaseStatus = MarkUpRecord.databaseStatus.failedToRegister;
             }
             else
             {
-                myMarkupInstance.DatabaseStatus = MarkUpRecord.databaseStatus.registered;
-                InjectMarkupParams(myMarkupInstance.markup_Id, download.downloadHandler.text);
+                myMarkupInstance.markupData.DatabaseStatus = MarkUpRecord.databaseStatus.registered;
+                InjectMarkupParams(myMarkupInstance.markupData.markup_Id, download.downloadHandler.text);
             }
         }
 

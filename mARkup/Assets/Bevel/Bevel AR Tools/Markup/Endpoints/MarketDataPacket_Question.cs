@@ -11,4 +11,9 @@ public class MarkupDataPacket_Question : System.Object, IMarkupDataPacket
     public float width;
     public Color color;
     public string markup_Id;
+
+    public string Serialize()
+    {
+        return JsonUtility.ToJson(this);
+    }
 }
