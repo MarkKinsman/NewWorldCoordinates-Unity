@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="ML-Shatter03" size="0.279400 0.215900" />
+    <ImageTarget name="ML-Shatter02" size="0.279400 0.215900" />
+    <ImageTarget name="ML-Shatter01" size="0.279400 0.215900" />
+    <ImageTarget name="1031-SE-Madison" size="0.914400 0.609600" />
+    <ImageTarget name="Generated04" size="0.203200 0.203200" />
+    <ImageTarget name="Generated03" size="0.203200 0.203200" />
+    <ImageTarget name="Generated02" size="0.203200 0.203200" />
+    <ImageTarget name="Generated01" size="0.203200 0.203200" />
+    <ImageTarget name="theo" size="0.100000 0.133333" />
+    <ImageTarget name="24" size="0.076200 0.076200" />
+    <ImageTarget name="ARMarkerPrint" size="1.066800 0.762000" />
+    <ImageTarget name="BevelCard04a" size="0.143000 0.094147" />
+    <ImageTarget name="BevelCard03a" size="0.153000 0.096928" />
+    <ImageTarget name="BevelCard02a" size="0.115000 0.099307" />
+    <ImageTarget name="BevelCard01a" size="0.150000 0.098653" />
+    <ImageTarget name="BlackMat" size="0.762000 0.441348" />
+    <ImageTarget name="Home" size="0.711200 0.429863" />
+    <ImageTarget name="Birds" size="0.457200 0.342900" />
+  </Tracking>
+</QCARConfig>
