@@ -35,7 +35,7 @@ namespace Bevel
         private Vector3 relativePosition;
         private Vector3 relativeRotation;
 
-
+        //What are these actually for??
         public Vector3 AnchorPosition
         {
             get
@@ -77,11 +77,12 @@ namespace Bevel
         // Use this for initialization
         void Start()
         {
-#if UNITY_LUMIN
-            _trackerBehavior = gameObject.GetComponent<MLImageTrackerBehavior>();
             locationManager = FindObjectOfType<LocationManager>();
 
-            //subscribe anchor methods
+#if UNITY_LUMIN
+            _trackerBehavior = gameObject.GetComponent<MLImageTrackerBehavior>();
+
+            //subscribe anchor methods to Magic Leap
             //_trackerBehavior.OnTargetFound += TargetFoundHandler;
             //_trackerBehavior.OnTargetLost += OnLoseTarget;
             _trackerBehavior.OnTargetUpdated += UpdateTargetHandler;
@@ -120,16 +121,16 @@ namespace Bevel
 
             //initializes menu visibility
             UpdateState();
-            if (currentState == AnchorState.Placed)
-            {
-                //find the difference between where the target is vs where it should be.
-                Vector3 deltaPositon = AnchorPosition - transform.position;
-                Vector3 deltaRotation = AnchorRotation - transform.rotation.eulerAngles;
+            //if (currentState == AnchorState.Placed)
+            //{
+            //    //find the difference between where the target is vs where it should be.
+            //    Vector3 deltaPositon = AnchorPosition - transform.position;
+            //    Vector3 deltaRotation = AnchorRotation - transform.rotation.eulerAngles;
 
-                //move player and anchor according to there delta transform (player first to avoid loss of reference
-                content.transform.Translate(-deltaPositon, Space.World);
-                content.transform.RotateAround(transform.position, Vector3.up, -deltaRotation.y);
-            }
+            //    //move content and anchor according to there delta transform (player first to avoid loss of reference
+            //    content.transform.Translate(-deltaPositon, Space.World);
+            //    content.transform.RotateAround(transform.position, Vector3.up, -deltaRotation.y);
+            //}
         }
 
 
@@ -165,8 +166,6 @@ namespace Bevel
         {
             if (currentState == AnchorState.Placed)
             {
-                //mar?
-
                 //move the location manager marker parent into place for the local positions to be correct.
                 Vector3 newCentralRotation = markerRotation.eulerAngles - AnchorRotation;
                 Vector3 newCentralPostition = markerPosition - AnchorPosition;

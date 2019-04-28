@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Bevel/Anchor System/ML Anchor Example.unity
+    guid: b1fe34d6ae82ba849b361b2a9de6e11e
   m_configObjects: {}

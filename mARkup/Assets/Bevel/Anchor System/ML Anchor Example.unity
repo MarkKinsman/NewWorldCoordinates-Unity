@@ -208,7 +208,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 59305790}
-  - component: {fileID: 59305792}
   - component: {fileID: 59305791}
   m_Layer: 0
   m_Name: Anchor (2)
@@ -225,7 +224,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59305789}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.53654, y: 0.00000001287, z: -0.085958}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1341001923}
@@ -247,24 +246,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFound: 0
-  currentState: 0
+  currentState: 1
   content: {fileID: 1544497348}
   _availableMenu: {fileID: 164146270}
   _placedMenu: {fileID: 581199979}
-  savedPosition: {x: 0, y: 0, z: 0}
-  savedRotation: {x: 0, y: 0, z: 0}
---- !u!114 &59305792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59305789}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 780297702, guid: 916c888a026741446a9d12e82d3935b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  savedPosition: {x: -0.53654, y: 0.00000001287, z: -0.085958}
+  savedRotation: {x: -0, y: 0, z: 0}
 --- !u!1 &96910308
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,7 +346,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &164146271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +475,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 196993918}
-  - component: {fileID: 196993919}
   - component: {fileID: 196993920}
   m_Layer: 0
   m_Name: Anchor (1)
@@ -505,7 +491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 196993917}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.437, y: 0, z: -0.353}
+  m_LocalPosition: {x: 0.521, y: 0.00000001287, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1467881003}
@@ -514,18 +500,6 @@ Transform:
   m_Father: {fileID: 1313685519}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &196993919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 196993917}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 780297702, guid: 916c888a026741446a9d12e82d3935b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &196993920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,12 +513,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFound: 0
-  currentState: 0
+  currentState: 1
   content: {fileID: 1544497348}
   _availableMenu: {fileID: 1694821809}
   _placedMenu: {fileID: 1569051776}
-  savedPosition: {x: 0, y: 0, z: 0}
-  savedRotation: {x: 0, y: 0, z: 0}
+  savedPosition: {x: 0.19146, y: 0.00000001287, z: 0.20871}
+  savedRotation: {x: -0, y: 0, z: 0}
 --- !u!1 &455671422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1504,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0dc73aeed6597d748b9d4c2c281a585c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af9899fae4710db468d4a936f68a359a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1590,7 +1564,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d36e7f17ce4192944b9e36c0ac428b4b, type: 2}
+  - {fileID: 2100000, guid: b62873551dfeef943be6324c304cd0ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1700,7 +1674,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0dc73aeed6597d748b9d4c2c281a585c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd81e76a000762144b656bbff87bed7b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2012,7 +1986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1694821810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2202,7 +2176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7e663c35b4b9a145b6bde7023ab4dd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 1544497348}
 --- !u!1 &1747713793
 GameObject:
   m_ObjectHideFlags: 0
