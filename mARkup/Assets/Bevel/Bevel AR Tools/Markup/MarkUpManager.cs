@@ -61,13 +61,13 @@ namespace Bevel
         public void AddMarkUp(RaycastHit hit)
         {
             GameObject markupObject = Instantiate(markupPrefab);
-            MarkUpRecord markUp = markupObject.GetComponent<MarkUpRecord>();
+            //MarkUpRecord markUp = markupObject.GetComponent<MarkUpRecord>();
 
             markupObject.transform.position = hit.point;
             markupObject.transform.parent = transform;
 
             //markUp.data = hit.collider.gameObject;
-            markUp.location = markupObject.transform.position;
+            //markUp.location = markupObject.transform.position;
         }
 
         //for loading markups that are saved to the server
