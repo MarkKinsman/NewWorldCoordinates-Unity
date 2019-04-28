@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.WSA.Input;
 
-public class inputTest : MonoBehaviour
+
+public class HololensInput : MonoBehaviour
 {
-    public static inputTest Instance { get; private set; }
+    public static HololensInput Instance { get; private set; }
 
     // Represents the hologram that is currently being gazed at.
     public GameObject FocusedObject { get; private set; }

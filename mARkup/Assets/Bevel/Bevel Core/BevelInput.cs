@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using Hyperreal;
 using UnityEngine.Events;
 using Bevel;
-#if UNITY_LUMIN
+#if PLATFORM_LUMIN
 using UnityEngine.XR.MagicLeap;
 using MagicLeap;
 #endif
@@ -18,50 +18,56 @@ namespace Bevel
 
         public LayerMask defaultClickLayers = ~0;
         public LayerMask defaultCropLayer = 0;
-        public LayerMask defaultButtonLayer = 11;
 
         public bool isClickLogged;
 
+        public bool isPrimaryRayVisualized;
+        private LineRenderer primaryRayVis;
         public bool isMLRayVisualized;
         public GameObject rayVisualizer;
 
-        public delegate void ClickObjectEvent(GameObject clickedObject);
-        public static ClickObjectEvent clickObjectEvent;
-        public static ClickObjectEvent clickObjectEventCropped;
-        public static ClickObjectEvent clickButtonEvent;
-        public static ClickObjectEvent clickButtonEventCropped;
+        //to discover the main button is released.
+        public bool isMainButtonPressed;
+        private static bool isMLTriggerDown;
 
-        public delegate void ClickHitEvent(RaycastHit clickHit);
-        public ClickHitEvent clickHitEvent;
+        //or we do them together with a custom class, how have I not thought of this??
+        public delegate void ClickEvent(Click click);
+        public static ClickEvent clickEvent;
+        public static ClickEvent clickEventCropped;
 
-        public static bool subscribedClick;
+        public static bool subscribedPress;
+        public static bool subscribedUnpress;
 
         public GameObject temporaryClickVis;
 
         //For isolated test click testing. Not usually called.
-        public void ClickedObjectEventNotifier(GameObject thing)
+        public void ClickedObjectEventNotifier(Click click)
         {
             if (isClickLogged)
             {
-                Debug.Log("clicked on " + thing.name);
+                Debug.Log("clicked on " + click.clickedObject.name);
             }
         }
 
         // Use this for initialization
         void Start()
         {
-            clickObjectEvent += ClickedObjectEventNotifier;
-#if UNITY_LUMIN
+            clickEvent += ClickedObjectEventNotifier;
+#if PLATFORM_LUMIN
             MLInput.OnTriggerDown += SubscribeClickHandler;
+            MLInput.OnTriggerUp += SubscribeUnpressHandler;
 #endif
+            HololensInput.airTapEvent += GenericClick;
         }
 
         private void OnDestroy()
         {
-            clickObjectEvent -= ClickedObjectEventNotifier;
-#if UNITY_LUMIN
+            clickEvent -= ClickedObjectEventNotifier;
+#if PLATFORM_LUMIN
             MLInput.OnTriggerDown -= SubscribeClickHandler;
+            MLInput.OnTriggerUp -= SubscribeUnpressHandler;
 #endif
+            HololensInput.airTapEvent -= GenericClick;
         }
 
 
@@ -69,52 +75,67 @@ namespace Bevel
         //weird and roundabout but maybe the best way.
         private static void SubscribeClickHandler(byte controllerID, float value)
         {
-            subscribedClick = true;
+            subscribedPress = true;
+            isMLTriggerDown = true;
+        }
+        private static void SubscribeUnpressHandler(byte controllerID, float value)
+        {
+            subscribedUnpress = true;
+            isMLTriggerDown = false;
+        }
+
+        public void GenericClick()
+        {
+            Debug.Log("Generic Click");
+            subscribedPress = true;
+        }
+        public void GenericUnclick()
+        {
+            subscribedUnpress = true;
         }
 
         // Every frame check for clicks, raycast on clicks, and visualize
         void Update()
         {
-            GameObject clickedObject;
-            if (clickedObject = TestClick(defaultClickLayers))
+
+            Click click = TestClick(defaultClickLayers);
+            if (click != null)
             {
-                clickObjectEvent(clickedObject);
-            }
-            if (clickedObject = TestClick(defaultClickLayers, defaultCropLayer))
-            {
-                clickObjectEventCropped(clickedObject);
-            }
-            if (clickedObject = TestClick(defaultButtonLayer))
-            {
-                clickButtonEvent(clickedObject);
-            }
-            if (clickedObject = TestClick(defaultButtonLayer, defaultCropLayer))
-            {
-                clickButtonEventCropped(clickedObject);
+                clickEvent(click);
             }
 
+            Click croppedClick = TestClick(defaultClickLayers, defaultCropLayer);
+            if (croppedClick != null)
+            {
+                clickEventCropped(croppedClick);
+            }
 
-#if UNITY_LUMIN
+#if PLATFORM_LUMIN
             if (isMLRayVisualized)
             {
                 visualizeRay(GetControllerRay(), rayVisualizer);
             }
 #endif
 
+            if (isPrimaryRayVisualized)
+            {
+                visualizeRay(GetPrimaryControlRay(), rayVisualizer);
+            }
+
             //always last in update, undo the subscribe handlers
-            subscribedClick = false;
+            subscribedPress = false;
         }
 
+        #region (TestClick Called every frame to see if anything is clicked and returns a Click(
         //If no layer is selected, 'Default' layer will be selected. (static version)
-        public GameObject TestClick()
+        public Click TestClick()
         {
             return TestClick(defaultClickLayers);
         }
 
-
         //For use with cropping box. Only allows clicks for objects within the cropbox
         //TODO: extend the delegate version for cropped clicks
-        public static GameObject TestClick(LayerMask testLayer, LayerMask clipLayer)
+        public static Click TestClick(LayerMask testLayer, LayerMask clipLayer)
         {
             RaycastHit hit;
             RaycastHit extendedHit;
@@ -147,7 +168,7 @@ namespace Bevel
                     {
                         if (FindObjectOfType<BoxMaskMaterialAligner>().GetComponent<Collider>().bounds.Contains(extendedHit.point))
                         {
-                            return extendedHit.collider.gameObject;
+                            return new Click(extendedHit.collider.gameObject, extendedHit.point); ;
                         }
                         else
                         {
@@ -167,12 +188,11 @@ namespace Bevel
             return null;
         }
 
-
         //for both mouse and ios, test for clicks
-        public static GameObject TestClick(LayerMask layer)
+        public static Click TestClick(LayerMask layer)
         {
 
-            if (isSomethingClicked())
+            if (isSomethingPressed())
             {
 
                 Ray clickRay = GetAnyClickRay();
@@ -180,7 +200,7 @@ namespace Bevel
                 RaycastHit hit;
                 if (Physics.Raycast(clickRay, out hit, 1000f, layer))
                 {
-                    return hit.collider.gameObject;
+                    return new Click(hit.collider.gameObject, hit.point);
                 }
                 else
                 {
@@ -192,12 +212,12 @@ namespace Bevel
                 return null;
             }
         }
-
-
+        #endregion
 
         //TODO: Might use this to aggregate controller tests. Might not be worth it. 
         //Maybe should just have one for each platform. But for now.
-        public static bool isSomethingClicked()
+        
+        public static bool isSomethingPressed()
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -207,10 +227,28 @@ namespace Bevel
             {
                 return true;
             }
-            else if (subscribedClick)
+            else if (subscribedPress)
             {
                 return true;
             }
+            return false;
+        }
+
+        public static bool isSomethingStillPressed()
+        {
+            if (Input.GetMouseButton(0))
+            {
+                return true;
+            }
+            else if (Input.touchCount == 1)
+            {
+                return true;
+            }
+            else if (isMLTriggerDown)
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -220,6 +258,7 @@ namespace Bevel
             Ray clickRay = new Ray();
             if (Input.GetMouseButtonDown(0))
             {
+
                 clickRay = GetMouseRay();
                 return clickRay;
             }
@@ -228,11 +267,14 @@ namespace Bevel
                 clickRay = GetTouchRay();
                 return clickRay;
             }
-            else if (subscribedClick)
+            else if (subscribedPress)
             {
+                subscribedPress = false;
+                clickRay = GetCameraRay();
 
-                subscribedClick = false;
+                            #if PLATFORM_LUMIN
                 clickRay = GetControllerRay();
+#endif
                 return clickRay;
             }
             else
@@ -242,7 +284,26 @@ namespace Bevel
             }
         }
 
-        #region Get Rays
+        public static Ray GetPrimaryControlRay()
+        {
+#if PLATFORM_LUMIN
+            if (GameObject.FindObjectOfType<ControllerTransform>())
+            {
+                return GetControllerRay();
+            }
+#endif
+            if (Input.mousePresent)
+            {
+                return GetMouseRay();
+            }
+            else
+            {
+                return GetCameraRay();
+            }
+
+        }
+
+#region Get Rays
         public static Ray GetMouseRay()
         {
             Vector2 mousePosition = Input.mousePosition;
@@ -268,7 +329,7 @@ namespace Bevel
 #if UNITY_IOS
             controller = Camera.main.gameObject;
 #endif
-#if UNITY_LUMIN
+#if PLATFORM_LUMIN
             controller = GameObject.FindObjectOfType<ControllerTransform>().gameObject;
 #endif
             Ray controllerRay = new Ray(controller.transform.position, controller.transform.forward);
@@ -280,7 +341,7 @@ namespace Bevel
             Ray ray = new Ray();
             return ray;
         }
-        #endregion
+#endregion
 
         //stick an object at the ray hit point so we can see that it's working.
         public void visualizeRay(Ray ray, GameObject objectAtHit)
@@ -290,12 +351,50 @@ namespace Bevel
             {
                 objectAtHit.SetActive(true);
                 objectAtHit.transform.position = hit.point;
+                objectAtHit.transform.eulerAngles = hit.normal;
+
+                primaryRayVis = GetComponent<LineRenderer>();
+                primaryRayVis.enabled = true;
+                Vector3[] visPoints = new Vector3[2];
+                visPoints[0] = ray.origin;
+                visPoints[1] = hit.point;
+                primaryRayVis.SetPositions(visPoints);
             }
             else
             {
                 objectAtHit.SetActive(false);
+                primaryRayVis.enabled = false;
             }
 
+        }
+    }
+
+
+    //so that I can return all the data I want
+    public class Click
+    {
+        private bool isValid;
+        public GameObject clickedObject;
+        public Vector3 clickPoint;
+
+        public bool IsValid
+        {
+            get
+            {
+                return isValid;
+            }
+        }
+
+        public Click()
+        {
+            isValid = false;
+        }
+
+        public Click(GameObject setObject, Vector3 setPoint)
+        {
+            clickedObject = setObject;
+            clickPoint = setPoint;
+            isValid = true;
         }
     }
 }

@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: d66dc691f41cbd549b0565799167ba07
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 1
+  selectedNodes: 00000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 56f40ef86e63dd4acbf19756ae9c951b
+  longitude: -105.242139
+  latitude: 40.018309
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 0.46027923, y: 0.5750969, z: 1.0954971}
+      lookAt: {x: 0.08398354, y: -0.20017907, z: -0.7064803}
+      up: {x: -0.07934024, y: 0.9216028, z: -0.37993878}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Arrow
+    100002: Arrow 1
+    100004: Arrow 2
+    100006: Arrow 3
+    100008: Arrow 4
+    100010: Arrow 5
+    100012: Curve arrow
+    100014: Curve arrow 1
+    100016: Curve arrow 2
+    100018: Curve arrow 3
+    100020: //RootNode
+    100022: Diagonal
+    100024: Diagonal 1
+    100026: Diagonal 2
+    100028: Diagonal 3
+    400000: Arrow
+    400002: Arrow 1
+    400004: Arrow 2
+    400006: Arrow 3
+    400008: Arrow 4
+    400010: Arrow 5
+    400012: Curve arrow
+    400014: Curve arrow 1
+    400016: Curve arrow 2
+    400018: Curve arrow 3
+    400020: //RootNode
+    400022: Diagonal
+    400024: Diagonal 1
+    400026: Diagonal 2
+    400028: Diagonal 3
+    2100000: _defaultMat
+    2300000: Arrow
+    2300002: Arrow 1
+    2300004: Arrow 2
+    2300006: Arrow 3
+    2300008: Arrow 4
+    2300010: Arrow 5
+    2300012: Curve arrow
+    2300014: Curve arrow 1
+    2300016: Curve arrow 2
+    2300018: Curve arrow 3
+    2300020: Diagonal
+    2300022: Diagonal 1
+    2300024: Diagonal 2
+    2300026: Diagonal 3
+    3300000: Arrow
+    3300002: Arrow 1
+    3300004: Arrow 2
+    3300006: Arrow 3
+    3300008: Arrow 4
+    3300010: Arrow 5
+    3300012: Curve arrow
+    3300014: Curve arrow 1
+    3300016: Curve arrow 2
+    3300018: Curve arrow 3
+    3300020: Diagonal
+    3300022: Diagonal 1
+    3300024: Diagonal 2
+    3300026: Diagonal 3
+    4300000: Mesh Arrow
+    4300002: Mesh Curve arrow
+    4300004: Mesh Diagonal
+    6400000: Arrow
+    6400002: Arrow 1
+    6400004: Arrow 2
+    6400006: Arrow 3
+    6400008: Arrow 4
+    6400010: Arrow 5
+    6400012: Curve arrow
+    6400014: Curve arrow 1
+    6400016: Curve arrow 2
+    6400018: Curve arrow 3
+    6400020: Diagonal
+    6400022: Diagonal 1
+    6400024: Diagonal 2
+    6400026: Diagonal 3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 2
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

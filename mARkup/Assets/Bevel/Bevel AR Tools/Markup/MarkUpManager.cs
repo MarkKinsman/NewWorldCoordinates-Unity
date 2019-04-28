@@ -38,7 +38,7 @@ namespace Bevel
 
         void testAddClick()
         {
-            if (BevelInput.isSomethingClicked())
+            if (BevelInput.isSomethingPressed())
             {
                 Ray clickRay = BevelInput.GetAnyClickRay();
                 RaycastHit hit;

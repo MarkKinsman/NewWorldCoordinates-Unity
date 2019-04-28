@@ -19,8 +19,8 @@ public class SpatialButton : MonoBehaviour {
         if (calledOnClick == null)
             calledOnClick = new UnityEvent();
 
-        BevelInput.clickButtonEvent += CallClickEvent;
-        BevelInput.clickButtonEventCropped += CallClickEvent;
+        BevelInput.clickEvent += CallClickEvent;
+        BevelInput.clickEventCropped += CallClickEvent;
     }
 
     public void TurnOnOtherButtons(GameObject newButton)
@@ -38,9 +38,9 @@ public class SpatialButton : MonoBehaviour {
 
     //calls the calledOnClick unity event. To translate delegate subscription to unity event subscription. Now both are valid.
     //also bypasses the need to for local methods to take the gameObject argument. Because we know it's this one. 
-    public void CallClickEvent(GameObject clickedObject)
+    public void CallClickEvent(Click clickedObject)
     {
-        if (clickedObject == gameObject)
+        if (clickedObject.clickedObject == gameObject)
         {
             calledOnClick.Invoke();
         }
